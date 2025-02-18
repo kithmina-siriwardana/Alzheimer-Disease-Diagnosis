@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import RiskAnalysisTable from "@/app/components/dashboard/risk-analysis/RiskAnalysisTable";
+import RiskAnalysisTable from "@/components/dashboard/risk-analysis/RiskAnalysisTable";
 import { FormattedTableDataItem, TableDataItem } from "@/types/risk-analysis";
 import { useEffect, useState } from "react";
 
