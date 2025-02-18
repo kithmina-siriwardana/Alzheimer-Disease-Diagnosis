@@ -157,34 +157,43 @@ const RiskAnalysisNewForm = () => {
               <Input placeholder="ranging from 0 to 10" type="number" />
             </Form.Item>
             <Form.Item label="Diet Quality" name="DietQuality">
-              <Input placeholder="Enter diet quality score" type="number" />
+              <Input placeholder="ranging from 0 to 10" type="number" />
             </Form.Item>
             <Form.Item label="Sleep Quality" name="SleepQuality">
-              <Input placeholder="Enter sleep quality score" type="number" />
+              <Input placeholder="ranging from 4 to 10" type="number" />
             </Form.Item>
             <Form.Item label="MMSE Score" name="MMSE">
-              <Input placeholder="Enter MMSE score" type="number" />
+              <Input placeholder="ranging from 0 to 30" type="number" />
             </Form.Item>
             <Form.Item
               label="Functional Assessment"
               name="FunctionalAssessment"
             >
               <Input
-                placeholder="Enter functional assessment score"
+                placeholder="ranging from 0 to 10"
                 type="number"
               />
             </Form.Item>
             <Form.Item label="Memory Complaints" name="MemoryComplaints">
-              <Input placeholder="Enter memory complaints status" />
+              <Select placeholder="Enter memory complaints status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
-            <Form.Item label="Behavioral Problems" name="BehavioralProblems">
-              <Input placeholder="Enter behavioral problems status" />
+            <Form.Item label="Behavioral Problems" name="Behavioral Problems">
+              <Select placeholder="Enter memory complaints status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
             <Form.Item label="ADL Score" name="ADL">
-              <Input placeholder="Enter ADL score" type="number" />
+              <Input placeholder="ranging from 0 to 10" type="number" />
             </Form.Item>
             <Form.Item label="Confusion" name="Confusion">
-              <Input placeholder="Enter confusion status" />
+              <Select placeholder="Enter confusion status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
           </div>
           {/* Right Side */}
@@ -200,61 +209,84 @@ const RiskAnalysisNewForm = () => {
             </Form.Item>
             <Form.Item
               label="Cardiovascular Disease"
-              name="CardiovascularDisease"
+              name="Cardiovascular Disease"
             >
-              <Input placeholder="Enter cardiovascular disease status" />
+              <Select placeholder="Enter cardiovascular disease status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
             <Form.Item label="Diabetes" name="Diabetes">
-              <Input placeholder="Enter diabetes status" />
+              <Select placeholder="Enter diabetes status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
             <Form.Item label="Depression" name="Depression">
-              <Input placeholder="Enter depression status" />
+              <Select placeholder="Enter depression status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
-            <Form.Item label="Head Injury" name="HeadInjury">
-              <Input placeholder="Enter head injury status" />
+            <Form.Item label="Head Injury" name="Head Injury">
+              <Select placeholder="Enter head injury status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
             <Form.Item label="Hypertension" name="Hypertension">
-              <Input placeholder="Enter hypertension status" />
+              <Select placeholder="Enter hypertension status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
             <Form.Item label="Systolic BP" name="SystolicBP">
               <Input
-                placeholder="Enter systolic blood pressure"
+                placeholder="ranging from 90 to 180 mmHg"
                 type="number"
               />
             </Form.Item>
             <Form.Item label="Diastolic BP" name="DiastolicBP">
               <Input
-                placeholder="Enter diastolic blood pressure"
+                placeholder="ranging from 60 to 120 mmHg"
                 type="number"
               />
             </Form.Item>
             <Form.Item label="Total Cholesterol" name="CholesterolTotal">
-              <Input placeholder="Enter total cholesterol" type="number" />
+              <Input placeholder="ranging from 150 to 300 mg/dL" type="number" />
             </Form.Item>
             <Form.Item label="LDL Cholesterol" name="CholesterolLDL">
-              <Input placeholder="Enter LDL cholesterol" type="number" />
+              <Input placeholder="ranging from 50 to 200 mg/dL" type="number" />
             </Form.Item>
             <Form.Item label="HDL Cholesterol" name="CholesterolHDL">
-              <Input placeholder="Enter HDL cholesterol" type="number" />
+              <Input placeholder="ranging from 20 to 100 mg/dL" type="number" />
             </Form.Item>
             <Form.Item label="Triglycerides" name="CholesterolTriglycerides">
-              <Input placeholder="Enter triglycerides level" type="number" />
+              <Input placeholder="ranging from 50 to 400 mg/dL" type="number" />
             </Form.Item>
-
             <Form.Item label="Disorientation" name="Disorientation">
-              <Input placeholder="Enter disorientation status" />
+              <Select placeholder="Enter disorientation status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
-            <Form.Item label="Personality Changes" name="PersonalityChanges">
-              <Input placeholder="Enter personality changes status" />
+            <Form.Item label="Personality Changes" name="Personality Changes">
+              <Select placeholder="Enter personality changes status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
-            <Form.Item
-              label="Difficulty Completing Tasks"
-              name="DifficultyCompletingTasks"
-            >
-              <Input placeholder="Enter difficulty completing tasks status" />
+            <Form.Item label="Difficulty Completing Tasks" name="Difficulty Completing Tasks">
+              <Select placeholder="Enter difficulty completing tasks status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
             <Form.Item label="Forgetfulness" name="Forgetfulness">
-              <Input placeholder="Enter forgetfulness status" />
+              <Select placeholder="Enter forgetfulness status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
             </Form.Item>
           </div>
         </div>
