@@ -3,6 +3,7 @@ import { getRiskAnalysis } from "../services/modelService.js";
 
 export const createRiskAnalysis = async (req, res) => {
   try {
+    // console.log("Request Body:", req.body);
     const riskAnalysis = await getRiskAnalysis(req.body.data);
 
     const result = {

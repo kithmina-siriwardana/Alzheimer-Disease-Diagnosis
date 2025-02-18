@@ -28,3 +28,10 @@ export interface FormattedTableDataItem {
   confidence: string;
   createdDate: string;
 }
+
+export interface AddNewRecordModalProps {
+  isNewRecordModalOpen: boolean;
+  handleOk: () => void;
+  handleCancel: () => void;
+  form: any;
+}
