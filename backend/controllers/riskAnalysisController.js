@@ -25,3 +25,14 @@ export const createRiskAnalysis = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const getAllRiskAnalysis = async (req, res) => {
+  try {
+    const riskAnalysis = await RiskAnalysis.find();
+
+    res.status(200).json(riskAnalysis);
+  } catch (error) {
+    console.error("Risk Analysis Error:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
