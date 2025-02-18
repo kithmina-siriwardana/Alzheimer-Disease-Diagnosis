@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import predictionRoutes from "./routes/predictionRoutes.js";
+import riskAnalysisRoutes from "./routes/riskAnalysisRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ connectDB();
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/predictions", predictionRoutes);
+app.use("/api/predict/analyze-risk", riskAnalysisRoutes);
 
 // Error handling
 app.use((err, _req, res, _next) => {

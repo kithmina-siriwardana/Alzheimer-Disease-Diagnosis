@@ -17,18 +17,22 @@ def analyze_risk(model_type):
 
         if model_type == "xgb":
             dmatrix = xgb.DMatrix(input_df)
-            prediction = models[model_type].predict(dmatrix)
+            probabilities = models[model_type].predict(dmatrix)
         else:
-            prediction = models[model_type].predict(input_df)
+            probabilities = models[model_type].predict_proba(input_df)[
+                :, 1
+            ]  # Probability of class 1 (Alzheimer's)
+
+        prediction = int(probabilities[0] >= 0.5)  # Thresholding at 0.5
+        confidence = round(float(probabilities[0]), 4)  # Convert to float and round
 
         return jsonify(
             {
                 "model": model_type,
-                "prediction": int(prediction[0]),
+                "prediction": prediction,
+                "confidence": round(confidence * 100, 2),
                 "interpretation": (
-                    "Alzheimer's detected"
-                    if prediction[0]
-                    else "No Alzheimer's detected"
+                    "Alzheimer's detected" if prediction else "No Alzheimer's detected"
                 ),
             }
         )
