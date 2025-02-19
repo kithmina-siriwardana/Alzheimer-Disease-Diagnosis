@@ -42,10 +42,10 @@ const resultSchema = {
 
 const riskAnalysisSchema = new mongoose.Schema(
   {
-    userId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    userId: { type: String, required: true },
     data: dataSchema,
     result: resultSchema,
-    staffId: { type: mongoose.Schema.Types.ObjectId, required: true },
+    staffId: { type: String, required: true },
   },
   {
     timestamps: { createdAt: true, updatedAt: false },

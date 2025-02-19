@@ -5,50 +5,56 @@ import axios from "axios";
 
 const { Option } = Select;
 
-// const values = {
-//   ADL: "1",
-//   Age: "12",
-//   AlcoholConsumption: "1",
-//   BMI: "1",
-//   BehavioralProblems: "1",
-//   CardiovascularDisease: "1",
-//   CholesterolHDL: "1",
-//   CholesterolLDL: "1",
-//   CholesterolTotal: "1",
-//   CholesterolTriglycerides: "1",
-//   Confusion: "1",
-//   Depression: "1",
-//   Diabetes: "1",
-//   DiastolicBP: "1",
-//   DietQuality: "1",
-//   DifficultyCompletingTasks: "1",
-//   Disorientation: "1",
-//   EducationLevel: "1",
-//   Ethnicity: "1",
-//   FamilyHistoryAlzheimers: "1",
-//   Forgetfulness: "1",
-//   FunctionalAssessment: "1",
-//   Gender: "0",
-//   HeadInjury: "1",
-//   Hypertension: "1",
-//   MMSE: "1",
-//   MemoryComplaints: "1",
-//   PersonalityChanges: "1",
-//   PhysicalActivity: "1",
-//   SleepQuality: "1",
-//   Smoking: "1",
-//   SystolicBP: "1",
-// };
-
 const RiskAnalysisNewForm = () => {
-  const onFinish = (values: any) => {
-    console.log("Form values:", values);
+  const [form] = Form.useForm();
 
+  const generateRandomData = () => {
+    const randomValue = (min: number, max: number) =>
+      Math.floor(Math.random() * (max - min + 1)) + min;
+    const randomFloat = (min: number, max: number) =>
+      (Math.random() * (max - min) + min).toFixed(2);
+
+    form.setFieldsValue({
+      Age: randomValue(40, 90),
+      Gender: randomValue(0, 1).toString(),
+      EducationLevel: randomValue(0, 3).toString(),
+      BMI: randomFloat(15, 40),
+      Smoking: randomValue(0, 1).toString(),
+      AlcoholConsumption: randomFloat(0, 20),
+      PhysicalActivity: randomFloat(0, 10),
+      DietQuality: randomFloat(0, 10),
+      SleepQuality: randomFloat(4, 10),
+      FamilyHistoryAlzheimers: randomValue(0, 1).toString(),
+      CardiovascularDisease: randomValue(0, 1).toString(),
+      Diabetes: randomValue(0, 1).toString(),
+      Depression: randomValue(0, 1).toString(),
+      HeadInjury: randomValue(0, 1).toString(),
+      Hypertension: randomValue(0, 1).toString(),
+      SystolicBP: randomValue(90, 180),
+      DiastolicBP: randomValue(60, 120),
+      CholesterolTotal: randomFloat(150, 300),
+      CholesterolLDL: randomFloat(50, 200),
+      CholesterolHDL: randomFloat(20, 100),
+      CholesterolTriglycerides: randomFloat(50, 400),
+      MMSE: randomFloat(0, 30),
+      FunctionalAssessment: randomFloat(0, 10),
+      MemoryComplaints: randomValue(0, 1).toString(),
+      BehavioralProblems: randomValue(0, 1).toString(),
+      ADL: randomFloat(0, 10),
+      Confusion: randomValue(0, 1).toString(),
+      Disorientation: randomValue(0, 1).toString(),
+      PersonalityChanges: randomValue(0, 1).toString(),
+      DifficultyCompletingTasks: randomValue(0, 1).toString(),
+      Forgetfulness: randomValue(0, 1).toString(),
+    });
+  };
+
+  const onFinish = (values: any) => {
     const payload = {
       data: {
         Age: parseInt(values.Age, 10),
         Gender: parseInt(values.Gender, 10),
-        Ethnicity: parseInt(values.Ethnicity, 10),
+        Ethnicity: 2,
         EducationLevel: parseInt(values.EducationLevel, 10),
         BMI: parseFloat(values.BMI),
         Smoking: parseInt(values.Smoking, 10),
@@ -82,14 +88,14 @@ const RiskAnalysisNewForm = () => {
         ),
         Forgetfulness: parseInt(values.Forgetfulness, 10),
       },
-      userId: "65f3a7bfa9c8c324d7fbc123",
-      staffId: "65f3a7bfa9c8c324d7fbc456",
+      userId: "USR002356",
+      staffId: "STF000184",
     };
 
     axios
       .post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/predict/analyze-risk`,
-        payload, // Send the properly structured payload
+        payload,
         {
           headers: {
             "Content-Type": "application/json",
@@ -109,7 +115,7 @@ const RiskAnalysisNewForm = () => {
       <h2 className="text-2xl font-semibold text-center mb-6">
         Add New Record
       </h2>
-      <Form layout="vertical" onFinish={onFinish}>
+      <Form form={form} layout="vertical" onFinish={onFinish}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
           {/* Left Side */}
           <div className="space-y-4">
@@ -120,14 +126,6 @@ const RiskAnalysisNewForm = () => {
               <Select placeholder="Select gender">
                 <Option value="0">Male</Option>
                 <Option value="1">Female</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Ethnicity" name="Ethnicity">
-              <Select placeholder="Select Ethnicity">
-                <Option value="0">Caucasian</Option>
-                <Option value="1">African American</Option>
-                <Option value="2">Asian</Option>
-                <Option value="3">Other</Option>
               </Select>
             </Form.Item>
             <Form.Item label="Education Level" name="EducationLevel">
@@ -169,10 +167,7 @@ const RiskAnalysisNewForm = () => {
               label="Functional Assessment"
               name="FunctionalAssessment"
             >
-              <Input
-                placeholder="ranging from 0 to 10"
-                type="number"
-              />
+              <Input placeholder="ranging from 0 to 10" type="number" />
             </Form.Item>
             <Form.Item label="Memory Complaints" name="MemoryComplaints">
               <Select placeholder="Enter memory complaints status">
@@ -191,6 +186,12 @@ const RiskAnalysisNewForm = () => {
             </Form.Item>
             <Form.Item label="Confusion" name="Confusion">
               <Select placeholder="Enter confusion status">
+                <Option value="1">Yes</Option>
+                <Option value="0">No</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Forgetfulness" name="Forgetfulness">
+              <Select placeholder="Enter forgetfulness status">
                 <Option value="1">Yes</Option>
                 <Option value="0">No</Option>
               </Select>
@@ -241,19 +242,16 @@ const RiskAnalysisNewForm = () => {
               </Select>
             </Form.Item>
             <Form.Item label="Systolic BP" name="SystolicBP">
-              <Input
-                placeholder="ranging from 90 to 180 mmHg"
-                type="number"
-              />
+              <Input placeholder="ranging from 90 to 180 mmHg" type="number" />
             </Form.Item>
             <Form.Item label="Diastolic BP" name="DiastolicBP">
-              <Input
-                placeholder="ranging from 60 to 120 mmHg"
-                type="number"
-              />
+              <Input placeholder="ranging from 60 to 120 mmHg" type="number" />
             </Form.Item>
             <Form.Item label="Total Cholesterol" name="CholesterolTotal">
-              <Input placeholder="ranging from 150 to 300 mg/dL" type="number" />
+              <Input
+                placeholder="ranging from 150 to 300 mg/dL"
+                type="number"
+              />
             </Form.Item>
             <Form.Item label="LDL Cholesterol" name="CholesterolLDL">
               <Input placeholder="ranging from 50 to 200 mg/dL" type="number" />
@@ -276,14 +274,11 @@ const RiskAnalysisNewForm = () => {
                 <Option value="0">No</Option>
               </Select>
             </Form.Item>
-            <Form.Item label="Difficulty Completing Tasks" name="Difficulty Completing Tasks">
+            <Form.Item
+              label="Difficulty Completing Tasks"
+              name="Difficulty Completing Tasks"
+            >
               <Select placeholder="Enter difficulty completing tasks status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Forgetfulness" name="Forgetfulness">
-              <Select placeholder="Enter forgetfulness status">
                 <Option value="1">Yes</Option>
                 <Option value="0">No</Option>
               </Select>
@@ -292,6 +287,13 @@ const RiskAnalysisNewForm = () => {
         </div>
 
         <div className="flex justify-end mt-6">
+          <button
+            type="button"
+            className="bg-gray-500 text-white px-6 py-2 rounded mr-4"
+            onClick={generateRandomData}
+          >
+            Fill Random Data
+          </button>
           <button
             className="bg-transparent text-black border border-primary font-semibold text-base px-6 py-2 rounded mr-4"
             onClick={() => {

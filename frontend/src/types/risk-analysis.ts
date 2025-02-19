@@ -1,18 +1,10 @@
-export interface RiskAnalysisTableProps {
-  key: string;
-  userId: string;
-  staffId: string;
-  prediction: string;
-  confidence: string;
-  createdDate: string;
-}
-
 interface Result {
   confidence: number;
   prediction: number;
 }
 
 export interface TableDataItem {
+  _id: string;
   userId: string;
   staffId: string;
   createdAt: string;
@@ -22,16 +14,21 @@ export interface TableDataItem {
 
 export interface FormattedTableDataItem {
   key: number;
+  id: string;
   userId: string;
   staffId: string;
   prediction: string;
   confidence: string;
-  createdDate: string;
+  date: string;
+  time: string;
+  handleRowClick: (recordId: string) => void;
 }
 
-export interface AddNewRecordModalProps {
-  isNewRecordModalOpen: boolean;
-  handleOk: () => void;
-  handleCancel: () => void;
-  form: any;
+export interface RecordDetailsModalProps {
+  selectedRecord: TableDataItem | null;
+  isModalVisible: boolean;
+  setIsModalVisible: (value: boolean) => void;
+  // handleOk: () => void;
+  // handleCancel: () => void;
+  // form: any;
 }

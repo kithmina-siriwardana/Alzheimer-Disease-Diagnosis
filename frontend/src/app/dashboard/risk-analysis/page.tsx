@@ -3,8 +3,7 @@ import axios from "axios";
 import RiskAnalysisTable from "@/components/dashboard/risk-analysis/RiskAnalysisTable";
 import { FormattedTableDataItem, TableDataItem } from "@/types/risk-analysis";
 import { useEffect, useState } from "react";
-// import { Form } from "antd";
-// import AddNewRecordModal from "@/components/dashboard/risk-analysis/RiskAnalysisModal";
+import RecordDetailsModal from "@/components/dashboard/risk-analysis/RiskAnalysisModal";
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -12,23 +11,29 @@ const formatDate = (dateString: string) => {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
   })
     .format(date)
-    .replace(",", "")
     .replace(/\//g, "-");
 };
 
+const formatTime = (dateString: string) => {
+  const date = new Date(dateString);
+  return new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  }).format(date);
+};
+
 export default function ProductsPage() {
-  // const [form] = Form.useForm();
   const [tableData, setTableData] = useState<TableDataItem[]>([]);
   const [formattedTableData, setFormattedTableData] = useState<
     FormattedTableDataItem[]
   >([]);
-  // const [isNewRecordModalOpen, setIsNewRecordModalOpen] = useState(false);
-  // const [loading, setLoading] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState<TableDataItem | null>(
+    null
+  );
 
   useEffect(() => {
     axios
@@ -45,9 +50,8 @@ export default function ProductsPage() {
   useEffect(() => {
     const formattedData = tableData.map((data, index) => {
       return {
+        id: data._id,
         key: index + 1,
-        // userId: "USR000010",
-        // staffId: "STF000010",
         userId: data.userId,
         staffId: data.staffId,
         prediction: data.result.prediction === 1 ? "Positive" : "Negative",
@@ -56,39 +60,27 @@ export default function ProductsPage() {
             ? data.result.confidence
             : 100 - data.result.confidence
         }%`,
-        createdDate: formatDate(data.createdAt),
+        date: formatDate(data.createdAt),
+        time: formatTime(data.createdAt),
+        handleRowClick: handleRowClick,
       };
     });
     setFormattedTableData(formattedData);
   }, [tableData]);
 
-  // const showAddRecordModal = () => {
-  //   setIsNewRecordModalOpen(true);
-  // };
-
-  // const handleCancel = () => {
-  //   setIsNewRecordModalOpen(false);
-  //   form.resetFields();
-  // };
-
-  // const handleOk = async () => {
-  //   try {
-  //     const values = await form.validateFields();
-  //     console.log("Form Values:", values);
-  //     setIsNewRecordModalOpen(false);
-  //     form.resetFields();
-  //   } catch (error) {
-  //     console.log("Validation Failed:", error);
-  //   }
-  // };
+  const handleRowClick = (recordId: string) => {
+    setSelectedRecord(
+      tableData.find((record) => record._id === recordId) || null
+    );
+    setIsModalVisible(true);
+  };
 
   return (
     <>
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Risk Analysis Management</h1>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4"
-          // onClick={showAddRecordModal}
+          className="bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded mt-4"
           onClick={() => {
             window.location.href = "/dashboard/risk-analysis/create";
           }}
@@ -99,15 +91,17 @@ export default function ProductsPage() {
       </div>
 
       <div className="flex flex-col mt-8">
-        <RiskAnalysisTable tableData={formattedTableData} />
+        <RiskAnalysisTable
+          tableData={formattedTableData}
+          handleRowClick={handleRowClick}
+        />
       </div>
 
-      {/* <AddNewRecordModal
-        isNewRecordModalOpen={isNewRecordModalOpen}
-        handleOk={handleOk}
-        handleCancel={handleCancel}
-        form={form}
-      /> */}
+      <RecordDetailsModal
+        selectedRecord={selectedRecord}
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      />
     </>
   );
 }
