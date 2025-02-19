@@ -1,3 +1,4 @@
+"use client";
 import { RecordDetailsModalProps } from "@/types/risk-analysis";
 import { Modal } from "antd";
 

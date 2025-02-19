@@ -6,12 +6,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
+    <div className="flex min-h-screen overflow-hidden">
+      {/* Sidebar (Scrollable) */}
       <Sidebar />
 
-      {/* Main Content */}
-      <main className="flex-1 p-6 transition-all duration-300">{children}</main>
+      {/* Main Content (Scrollable) */}
+      <main className="flex-1 p-6 overflow-auto h-screen">{children}</main>
     </div>
   );
 }

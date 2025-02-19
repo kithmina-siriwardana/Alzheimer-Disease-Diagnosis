@@ -28,7 +28,12 @@ export interface RecordDetailsModalProps {
   selectedRecord: TableDataItem | null;
   isModalVisible: boolean;
   setIsModalVisible: (value: boolean) => void;
-  // handleOk: () => void;
-  // handleCancel: () => void;
-  // form: any;
+}
+
+export interface SidebarItemProps {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  active: boolean;
+  collapsed: boolean;
 }

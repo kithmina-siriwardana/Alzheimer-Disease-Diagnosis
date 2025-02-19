@@ -299,6 +299,7 @@ const RiskAnalysisNewForm = () => {
             Fill Random Data
           </button>
           <button
+            type="button"
             className="bg-transparent text-black border border-primary font-semibold text-base px-6 py-2 rounded mr-4"
             onClick={() => {
               window.history.back();
