@@ -1,12 +1,14 @@
 "use client";
-import React from "react";
-import { Form, Input, Select } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Modal, Select } from "antd";
 import axios from "axios";
 
 const { Option } = Select;
 
 const RiskAnalysisNewForm = () => {
   const [form] = Form.useForm();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [response, setResponse] = useState<any>(null);
 
   const generateRandomData = () => {
     const randomValue = (min: number, max: number) =>
@@ -104,6 +106,8 @@ const RiskAnalysisNewForm = () => {
       )
       .then((response) => {
         console.log("Alzheimer create record response:", response.data);
+        setResponse(response.data);
+        setIsModalVisible(true);
       })
       .catch((error) => {
         console.error("Alzheimer create record error:", error);
@@ -310,6 +314,81 @@ const RiskAnalysisNewForm = () => {
           </button>
         </div>
       </Form>
+
+      <Modal
+        title={<p className="font-semibold text-xl">Prediction Results</p>}
+        open={isModalVisible}
+        onOk={() => {
+          setIsModalVisible(false);
+          setResponse(null);
+        }}
+        onCancel={() => {
+          setIsModalVisible(false);
+          setResponse(null);
+        }}
+        cancelButtonProps={{ style: { display: "none" } }}
+        footer={[
+          <div key="footer-buttons" className="flex justify-center gap-2">
+            <button
+              key="goBack"
+              className="bg-transparent text-primary border border-primary font-semibold text-base px-6 py-2 rounded hover:bg-primary-dark transition-colors mt-4"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              Back to Records
+            </button>
+            ,
+            <button
+              key="ok"
+              className="bg-primary text-white border border-primary font-semibold text-base px-6 py-2 rounded hover:bg-primary-dark transition-colors mt-4"
+              onClick={() => setIsModalVisible(false)}
+            >
+              OK
+            </button>
+          </div>,
+        ]}
+      >
+        <div className="text-center mt-8">
+          <p className="text-lg font-semibold mb-4">
+            Record has been analyzed successfully!
+          </p>
+          <div className="flex justify-center items-center mb-4">
+            {response?.prediction === 1 ? (
+              <div className="flex items-center text-red-700">
+                <i className="fas fa-exclamation-circle text-2xl mr-2"></i>
+                <span className="text-xl">
+                  There is a possibility of Alzheimer&apos;s disease.
+                </span>
+              </div>
+            ) : (
+              <div className="flex items-center text-green-700">
+                <i className="fas fa-check-circle text-2xl mr-2"></i>
+                <span className="text-xl">
+                  You are good! No possibility of Alzheimer&apos;s disease.
+                </span>
+              </div>
+            )}
+          </div>
+          <p className="text-lg mb-2">
+            <span className="font-semibold">Result:</span>{" "}
+            {response?.prediction === 1 ? (
+              <span className="text-red-700">Positive</span>
+            ) : (
+              <span className="text-green-700">Negative</span>
+            )}
+          </p>
+          <p className="text-lg">
+            <span className="font-semibold">Confidence:</span>{" "}
+            <span className="text-blue-500">
+              {response?.confidence > 50
+                ? response?.confidence
+                : 100 - response?.confidence}
+              %
+            </span>
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };
