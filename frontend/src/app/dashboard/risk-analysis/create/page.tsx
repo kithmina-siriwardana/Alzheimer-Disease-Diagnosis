@@ -309,7 +309,7 @@ const RiskAnalysisNewForm = () => {
           </button>
           <button
             type="submit"
-            className="bg-primary text-white font-semibold text-base px-6 py-2 rounded"
+            className="bg-btnPrimary text-white font-semibold text-base px-6 py-2 rounded"
           >
             Submit
           </button>
@@ -342,7 +342,7 @@ const RiskAnalysisNewForm = () => {
             ,
             <button
               key="ok"
-              className="bg-primary text-white border border-primary font-semibold text-base px-6 py-2 rounded hover:bg-primary-dark transition-colors mt-4"
+              className="bg-btnPrimary text-white border border-primary font-semibold text-base px-6 py-2 rounded hover:bg-primary-dark transition-colors mt-4"
               onClick={() => setIsModalVisible(false)}
             >
               OK

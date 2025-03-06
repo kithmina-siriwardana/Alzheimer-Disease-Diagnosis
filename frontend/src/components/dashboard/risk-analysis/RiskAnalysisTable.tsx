@@ -2,6 +2,7 @@
 import { FormattedTableDataItem } from "@/types/risk-analysis";
 import { Table } from "antd";
 import { ColumnsType } from "antd/es/table";
+import { CSSProperties } from "react";
 
 const columns: ColumnsType<FormattedTableDataItem> = [
   {
@@ -49,6 +50,10 @@ const columns: ColumnsType<FormattedTableDataItem> = [
   },
 ];
 
+const headerStyle: CSSProperties = {
+  backgroundColor: "#ECF1FC",
+};
+
 const RiskAnalysisTable = ({
   tableData,
   handleRowClick,
@@ -70,6 +75,15 @@ const RiskAnalysisTable = ({
           },
           style: { cursor: "pointer" },
         };
+      }}
+      components={{
+        header: {
+          cell: (props) => (
+            <th {...props} style={{ ...props.style, ...headerStyle }}>
+              {props.children}
+            </th>
+          ),
+        },
       }}
     />
   );

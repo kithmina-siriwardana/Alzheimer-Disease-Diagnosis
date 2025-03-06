@@ -1,3 +1,3 @@
 export default function UsersPage() {
-  return <h1 className="text-2xl">Users Management</h1>;
+  return <h1 className="text-3xl font-semibold">Users Management</h1>;
 }

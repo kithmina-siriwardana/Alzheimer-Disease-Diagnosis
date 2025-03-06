@@ -1,4 +1,4 @@
 "use client";
 export default function DashboardHome() {
-  return <h1 className="text-2xl">Dashboard Home</h1>;
+  return <h1 className="text-3xl font-semibold">Dashboard</h1>;
 }

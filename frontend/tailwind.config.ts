@@ -12,10 +12,20 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
 
-        primary: "#213555",
-        secondary: "#7886C7",
-        tertiary: "#A9B5DF",
+        primary: "#0E2249",
+        secondary: "#F6F8FF",
+        tertiary: "#ECF1FC",
         quaternary: "#FFF2F2",
+
+        btnPrimary: "#14367B",
+
+        sidebarBtnHover: "#EFF6FF",
+        sidebarBtnActive: "#EFF6FF",
+        sidebarBtnText: "#FFFFFF",
+        sidebarBtnTextActive: "#1A8DC2",
+
+        breadcrumbBgActive: "#E2EFFF",
+        breadcrumbTextActive: "#00387F",
       },
     },
   },

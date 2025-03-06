@@ -19,7 +19,7 @@ const RecordDetailsModal = ({
         footer={[
           <button
             key="ok"
-            className="bg-primary text-white font-semibold text-base px-6 py-2 rounded hover:bg-primary-dark transition-colors"
+            className="bg-btnPrimary text-white font-semibold text-base px-6 py-2 rounded hover:bg-primary-dark transition-colors"
             onClick={() => setIsModalVisible(false)}
           >
             OK

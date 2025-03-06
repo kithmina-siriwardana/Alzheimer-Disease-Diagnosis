@@ -77,20 +77,19 @@ export default function ProductsPage() {
 
   return (
     <>
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">Risk Analysis Management</h1>
+      <div className="flex justify-between items-center ">
+        <h1 className="text-3xl font-semibold">Risk Analysis Management</h1>
         <button
-          className="bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded mt-4"
+          className="bg-btnPrimary hover:bg-blue-700 text-white py-2 px-4 rounded"
           onClick={() => {
             window.location.href = "/dashboard/risk-analysis/create";
           }}
         >
-          {" "}
           Add New Record
         </button>
       </div>
 
-      <div className="flex flex-col mt-8">
+      <div className="flex flex-col mt-6 bg-white p-6 rounded-lg shadow-md">
         <RiskAnalysisTable
           tableData={formattedTableData}
           handleRowClick={handleRowClick}
