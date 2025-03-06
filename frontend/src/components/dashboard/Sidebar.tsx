@@ -86,19 +86,27 @@ export default function Sidebar() {
       </nav>
 
       <div className="flex mb-4 p-4 w-full justify-between items-center">
-        <div className="flex w-full items-center">
-          <Image
-            src="/images/profile.png"
-            alt="Profile"
-            width={50}
-            height={50}
-          />
-          <div className="flex flex-col ml-3">
-            <span className="text-base">John Doe</span>
-            <span className="text-xs">Admin</span>
+        {!collapsed ? (
+          <>
+            <div className="flex w-full items-center">
+              <Image
+                src="/images/profile.png"
+                alt="Profile"
+                width={50}
+                height={50}
+              />
+              <div className="flex flex-col ml-3">
+                <span className="text-base">John Doe</span>
+                <span className="text-xs">Admin</span>
+              </div>
+            </div>
+            <IoMdLogOut size={24} className="cursor-pointer" />
+          </>
+        ) : (
+          <div className="flex w-full items-center justify-center">
+            <IoMdLogOut size={24} className="cursor-pointer" />
           </div>
-        </div>
-        <IoMdLogOut size={24} className="cursor-pointer" />
+        )}
       </div>
     </div>
   );

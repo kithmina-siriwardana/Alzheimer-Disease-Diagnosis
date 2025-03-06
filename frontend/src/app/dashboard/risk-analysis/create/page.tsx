@@ -115,206 +115,226 @@ const RiskAnalysisNewForm = () => {
   };
 
   return (
-    <div className="py-6 px-20">
-      <h2 className="text-2xl font-semibold text-center mb-6">
+    <div className="">
+      <h1 className="text-3xl font-semibold text-center mb-6">
         Add New Record
-      </h2>
-      <Form form={form} layout="vertical" onFinish={onFinish}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-          {/* Left Side */}
-          <div className="space-y-4">
-            <Form.Item label="Age" name="Age">
-              <Input placeholder="Enter age" type="number" />
-            </Form.Item>
-            <Form.Item label="Gender" name="Gender">
-              <Select placeholder="Select gender">
-                <Option value="0">Male</Option>
-                <Option value="1">Female</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Education Level" name="EducationLevel">
-              <Select placeholder="Select education level">
-                <Option value="0">None</Option>
-                <Option value="1">High School</Option>
-                <Option value="2">Bachelor&apos;s</Option>
-                <Option value="3">Higher</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="BMI" name="BMI">
-              <Input placeholder="ranging from 15 to 40" type="number" />
-            </Form.Item>
-            <Form.Item label="Smoking" name="Smoking">
-              <Select placeholder="Select smoking status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Weekly Alcohol Consumption"
-              name="AlcoholConsumption"
-            >
-              <Input placeholder="ranging from 0 to 20" type="number" />
-            </Form.Item>
-            <Form.Item label="Weekly physical activity" name="PhysicalActivity">
-              <Input placeholder="ranging from 0 to 10" type="number" />
-            </Form.Item>
-            <Form.Item label="Diet Quality" name="DietQuality">
-              <Input placeholder="ranging from 0 to 10" type="number" />
-            </Form.Item>
-            <Form.Item label="Sleep Quality" name="SleepQuality">
-              <Input placeholder="ranging from 4 to 10" type="number" />
-            </Form.Item>
-            <Form.Item label="MMSE Score" name="MMSE">
-              <Input placeholder="ranging from 0 to 30" type="number" />
-            </Form.Item>
-            <Form.Item
-              label="Functional Assessment"
-              name="FunctionalAssessment"
-            >
-              <Input placeholder="ranging from 0 to 10" type="number" />
-            </Form.Item>
-            <Form.Item label="Memory Complaints" name="MemoryComplaints">
-              <Select placeholder="Enter memory complaints status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Behavioral Problems" name="Behavioral Problems">
-              <Select placeholder="Enter memory complaints status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="ADL Score" name="ADL">
-              <Input placeholder="ranging from 0 to 10" type="number" />
-            </Form.Item>
-            <Form.Item label="Confusion" name="Confusion">
-              <Select placeholder="Enter confusion status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Forgetfulness" name="Forgetfulness">
-              <Select placeholder="Enter forgetfulness status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
+      </h1>
+      <div className="bg-white px-20 py-10 rounded-lg shadow-md">
+        <Form form={form} layout="vertical" onFinish={onFinish}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+            {/* Left Side */}
+            <div className="space-y-4">
+              <Form.Item label="Age" name="Age">
+                <Input placeholder="Enter age" type="number" />
+              </Form.Item>
+              <Form.Item label="Gender" name="Gender">
+                <Select placeholder="Select gender">
+                  <Option value="0">Male</Option>
+                  <Option value="1">Female</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Education Level" name="EducationLevel">
+                <Select placeholder="Select education level">
+                  <Option value="0">None</Option>
+                  <Option value="1">High School</Option>
+                  <Option value="2">Bachelor&apos;s</Option>
+                  <Option value="3">Higher</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="BMI" name="BMI">
+                <Input placeholder="ranging from 15 to 40" type="number" />
+              </Form.Item>
+              <Form.Item label="Smoking" name="Smoking">
+                <Select placeholder="Select smoking status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                label="Weekly Alcohol Consumption"
+                name="AlcoholConsumption"
+              >
+                <Input placeholder="ranging from 0 to 20" type="number" />
+              </Form.Item>
+              <Form.Item
+                label="Weekly physical activity"
+                name="PhysicalActivity"
+              >
+                <Input placeholder="ranging from 0 to 10" type="number" />
+              </Form.Item>
+              <Form.Item label="Diet Quality" name="DietQuality">
+                <Input placeholder="ranging from 0 to 10" type="number" />
+              </Form.Item>
+              <Form.Item label="Sleep Quality" name="SleepQuality">
+                <Input placeholder="ranging from 4 to 10" type="number" />
+              </Form.Item>
+              <Form.Item label="MMSE Score" name="MMSE">
+                <Input placeholder="ranging from 0 to 30" type="number" />
+              </Form.Item>
+              <Form.Item
+                label="Functional Assessment"
+                name="FunctionalAssessment"
+              >
+                <Input placeholder="ranging from 0 to 10" type="number" />
+              </Form.Item>
+              <Form.Item label="Memory Complaints" name="MemoryComplaints">
+                <Select placeholder="Enter memory complaints status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Behavioral Problems" name="Behavioral Problems">
+                <Select placeholder="Enter memory complaints status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="ADL Score" name="ADL">
+                <Input placeholder="ranging from 0 to 10" type="number" />
+              </Form.Item>
+              <Form.Item label="Confusion" name="Confusion">
+                <Select placeholder="Enter confusion status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Forgetfulness" name="Forgetfulness">
+                <Select placeholder="Enter forgetfulness status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+            </div>
+            {/* Right Side */}
+            <div className="space-y-4">
+              <Form.Item
+                label="Family History of Alzheimer's"
+                name="FamilyHistoryAlzheimers"
+              >
+                <Select placeholder="Select family history status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                label="Cardiovascular Disease"
+                name="Cardiovascular Disease"
+              >
+                <Select placeholder="Enter cardiovascular disease status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Diabetes" name="Diabetes">
+                <Select placeholder="Enter diabetes status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Depression" name="Depression">
+                <Select placeholder="Enter depression status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Head Injury" name="Head Injury">
+                <Select placeholder="Enter head injury status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Hypertension" name="Hypertension">
+                <Select placeholder="Enter hypertension status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Systolic BP" name="SystolicBP">
+                <Input
+                  placeholder="ranging from 90 to 180 mmHg"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item label="Diastolic BP" name="DiastolicBP">
+                <Input
+                  placeholder="ranging from 60 to 120 mmHg"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item label="Total Cholesterol" name="CholesterolTotal">
+                <Input
+                  placeholder="ranging from 150 to 300 mg/dL"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item label="LDL Cholesterol" name="CholesterolLDL">
+                <Input
+                  placeholder="ranging from 50 to 200 mg/dL"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item label="HDL Cholesterol" name="CholesterolHDL">
+                <Input
+                  placeholder="ranging from 20 to 100 mg/dL"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item label="Triglycerides" name="CholesterolTriglycerides">
+                <Input
+                  placeholder="ranging from 50 to 400 mg/dL"
+                  type="number"
+                />
+              </Form.Item>
+              <Form.Item label="Disorientation" name="Disorientation">
+                <Select placeholder="Enter disorientation status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Personality Changes" name="Personality Changes">
+                <Select placeholder="Enter personality changes status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+              <Form.Item
+                label="Difficulty Completing Tasks"
+                name="Difficulty Completing Tasks"
+              >
+                <Select placeholder="Enter difficulty completing tasks status">
+                  <Option value="1">Yes</Option>
+                  <Option value="0">No</Option>
+                </Select>
+              </Form.Item>
+            </div>
           </div>
-          {/* Right Side */}
-          <div className="space-y-4">
-            <Form.Item
-              label="Family History of Alzheimer's"
-              name="FamilyHistoryAlzheimers"
-            >
-              <Select placeholder="Select family history status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Cardiovascular Disease"
-              name="Cardiovascular Disease"
-            >
-              <Select placeholder="Enter cardiovascular disease status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Diabetes" name="Diabetes">
-              <Select placeholder="Enter diabetes status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Depression" name="Depression">
-              <Select placeholder="Enter depression status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Head Injury" name="Head Injury">
-              <Select placeholder="Enter head injury status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Hypertension" name="Hypertension">
-              <Select placeholder="Enter hypertension status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Systolic BP" name="SystolicBP">
-              <Input placeholder="ranging from 90 to 180 mmHg" type="number" />
-            </Form.Item>
-            <Form.Item label="Diastolic BP" name="DiastolicBP">
-              <Input placeholder="ranging from 60 to 120 mmHg" type="number" />
-            </Form.Item>
-            <Form.Item label="Total Cholesterol" name="CholesterolTotal">
-              <Input
-                placeholder="ranging from 150 to 300 mg/dL"
-                type="number"
-              />
-            </Form.Item>
-            <Form.Item label="LDL Cholesterol" name="CholesterolLDL">
-              <Input placeholder="ranging from 50 to 200 mg/dL" type="number" />
-            </Form.Item>
-            <Form.Item label="HDL Cholesterol" name="CholesterolHDL">
-              <Input placeholder="ranging from 20 to 100 mg/dL" type="number" />
-            </Form.Item>
-            <Form.Item label="Triglycerides" name="CholesterolTriglycerides">
-              <Input placeholder="ranging from 50 to 400 mg/dL" type="number" />
-            </Form.Item>
-            <Form.Item label="Disorientation" name="Disorientation">
-              <Select placeholder="Enter disorientation status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Personality Changes" name="Personality Changes">
-              <Select placeholder="Enter personality changes status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Difficulty Completing Tasks"
-              name="Difficulty Completing Tasks"
-            >
-              <Select placeholder="Enter difficulty completing tasks status">
-                <Option value="1">Yes</Option>
-                <Option value="0">No</Option>
-              </Select>
-            </Form.Item>
-          </div>
-        </div>
 
-        <div className="flex justify-end mt-6">
-          <button
-            type="button"
-            className="bg-gray-500 text-white px-6 py-2 rounded mr-4"
-            onClick={generateRandomData}
-          >
-            Fill Random Data
-          </button>
-          <button
-            type="button"
-            className="bg-transparent text-black border border-primary font-semibold text-base px-6 py-2 rounded mr-4"
-            onClick={() => {
-              window.history.back();
-            }}
-          >
-            Back
-          </button>
-          <button
-            type="submit"
-            className="bg-btnPrimary text-white font-semibold text-base px-6 py-2 rounded"
-          >
-            Submit
-          </button>
-        </div>
-      </Form>
+          <div className="flex justify-end mt-10">
+            <button
+              type="button"
+              className="bg-gray-500 text-white px-6 py-2 rounded mr-4"
+              onClick={generateRandomData}
+            >
+              Fill Random Data
+            </button>
+            <button
+              type="button"
+              className="bg-transparent text-black border border-primary font-semibold text-base px-6 py-2 rounded mr-4"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              Back
+            </button>
+            <button
+              type="submit"
+              className="bg-btnPrimary text-white font-semibold text-base px-6 py-2 rounded"
+            >
+              Submit
+            </button>
+          </div>
+        </Form>
+      </div>
 
       <Modal
         title={<p className="font-semibold text-xl">Prediction Results</p>}
