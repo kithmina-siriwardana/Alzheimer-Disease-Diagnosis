@@ -18,6 +18,7 @@ export default {
         quaternary: "#FFF2F2",
 
         btnPrimary: "#14367B",
+        btnPrimaryHover: "#102b62",
 
         sidebarBtnHover: "#EFF6FF",
         sidebarBtnActive: "#EFF6FF",

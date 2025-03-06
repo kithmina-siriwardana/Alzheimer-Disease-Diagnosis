@@ -80,7 +80,7 @@ export default function ProductsPage() {
       <div className="flex justify-between items-center ">
         <h1 className="text-3xl font-semibold">Risk Analysis Management</h1>
         <button
-          className="bg-btnPrimary hover:bg-blue-700 text-white py-2 px-4 rounded"
+          className="bg-btnPrimary hover:bg-btnPrimaryHover text-white py-2 px-4 rounded"
           onClick={() => {
             window.location.href = "/dashboard/risk-analysis/create";
           }}
