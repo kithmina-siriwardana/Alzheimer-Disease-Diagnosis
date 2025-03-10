@@ -56,7 +56,6 @@ const RiskAnalysisNewForm = () => {
       data: {
         Age: parseInt(values.Age, 10),
         Gender: parseInt(values.Gender, 10),
-        Ethnicity: 2,
         EducationLevel: parseInt(values.EducationLevel, 10),
         BMI: parseFloat(values.BMI),
         Smoking: parseInt(values.Smoking, 10),

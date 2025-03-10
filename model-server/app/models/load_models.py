@@ -1,37 +1,40 @@
 import os
 import joblib
-import xgboost as xgb
-from xgboost import Booster as XGBoostBooster
+from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 
 
 def load_models():
-    # Get the directory where load_models.py is located
-    base_path = os.path.dirname(os.path.abspath(__file__))
+    # Get the current directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Construct paths relative to the script directory
-    models = {
-        "dtree": joblib.load(
-            os.path.join(base_path, "risk-analyze", "Decision Tree.pkl")
-        ),
-        "rf": joblib.load(os.path.join(base_path, "risk-analyze", "Random Forest.pkl")),
-        "knn": joblib.load(
-            os.path.join(base_path, "risk-analyze", "K-Nearest Neighbors.pkl")
-        ),
-        "logreg": joblib.load(
-            os.path.join(base_path, "risk-analyze", "Logistic Regression.pkl")
-        ),
-        "svm": joblib.load(
-            os.path.join(base_path, "risk-analyze", "Support Vector Machine.pkl")
-        ),
-        "xgb": XGBoostBooster(),
-        "catboost": CatBoostClassifier(),
+    # Dictionary to store the models
+    loaded_models = {}
+
+    # File paths for each model using os.path.join to ensure correct pathing
+    model_files = {
+        "RandomForest": os.path.join(current_dir, "risk-analyze", "Random_Forest.pkl"),
+        "XGBoost": os.path.join(current_dir, "risk-analyze", "XGBoost.json"),
+        "CatBoost": os.path.join(current_dir, "risk-analyze", "CatBoost.cbm"),
+        "KNN": os.path.join(current_dir, "risk-analyze", "KNN.pkl"),
+        "DecisionTree": os.path.join(current_dir, "risk-analyze", "Decision_Tree.pkl"),
     }
 
-    # Load HDF5 models
-    models["xgb"].load_model(os.path.join(base_path, "risk-analyze", "XGBoost.h5"))
-    models["catboost"].load_model(
-        os.path.join(base_path, "risk-analyze", "CatBoost.h5")
-    )
+    # Load each model
+    for name, file_path in model_files.items():
+        if "XGBoost" in name:
+            model = XGBClassifier()
+            model.load_model(file_path)
+        elif "CatBoost" in name:
+            model = CatBoostClassifier()
+            model.load_model(file_path)
+        else:
+            model = joblib.load(file_path)
 
-    return models
+        loaded_models[name] = model
+
+    # Load the scaler
+    scaler = joblib.load(os.path.join(current_dir, "risk-analyze", "scaler.pkl"))
+    print("Scaler loaded successfully!")
+
+    return loaded_models, scaler
