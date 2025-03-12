@@ -34,7 +34,7 @@ export const getPrediction = async (file) => {
 export const getRiskAnalysis = async (data) => {
   try {
     const response = await axios.post(
-      `${process.env.MODEL_SERVER_URL}/predict/risk-analyze/rf`,
+      `${process.env.MODEL_SERVER_URL}/predict/risk/rf`,
       data
     );
 

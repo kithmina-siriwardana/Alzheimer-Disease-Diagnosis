@@ -56,8 +56,8 @@ ehthumbs.db
 Thumbs.db
 
 # Notebooks
-notebooks/risk-analyze/
-samples/risk-analyze/
+notebooks/risk/
+samples/risk/
 
 # Local development files
 *.local
