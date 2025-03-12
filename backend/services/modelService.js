@@ -12,7 +12,7 @@ export const getPrediction = async (file) => {
     });
 
     const response = await axios.post(
-      "http://localhost:5000/predict",
+      `${process.env.MODEL_SERVER_URL}/api/predict/mri`,
       formData,
       {
         headers: {
@@ -34,7 +34,7 @@ export const getPrediction = async (file) => {
 export const getRiskAnalysis = async (data) => {
   try {
     const response = await axios.post(
-      `${process.env.MODEL_SERVER_URL}/predict/risk/rf`,
+      `${process.env.MODEL_SERVER_URL}/api/predict/risk/XGBoost`,
       data
     );
 

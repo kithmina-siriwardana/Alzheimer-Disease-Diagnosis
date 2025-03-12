@@ -11,22 +11,6 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-
-        primary: "#0E2249",
-        secondary: "#F6F8FF",
-        tertiary: "#ECF1FC",
-        quaternary: "#FFF2F2",
-
-        btnPrimary: "#14367B",
-        btnPrimaryHover: "#102b62",
-
-        sidebarBtnHover: "#EFF6FF",
-        sidebarBtnActive: "#EFF6FF",
-        sidebarBtnText: "#FFFFFF",
-        sidebarBtnTextActive: "#1A8DC2",
-
-        breadcrumbBgActive: "#E2EFFF",
-        breadcrumbTextActive: "#00387F",
       },
     },
   },
